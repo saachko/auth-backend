@@ -16,6 +16,19 @@ const userScheme = new Schema({
     type: String,
     required: true,
   },
+  registrationDate: {
+    type: String,
+    required: true,
+  },
+  lastLoginDate: {
+    type: String,
+    required: true,
+  },
+  isBlocked: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 export default mongoose.model('User', userScheme);
