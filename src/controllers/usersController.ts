@@ -22,4 +22,16 @@ const deleteUser = async (request: Request, response: Response) => {
   }
 };
 
-export { getUsers, deleteUser };
+const updateUser = async (request: Request, response: Response) => {
+  try {
+    const userId = new ObjectId(request.params.id);
+    const updatedUser = await User.findByIdAndUpdate(userId, request.body, {
+      new: true,
+    });
+    response.json(updatedUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getUsers, deleteUser, updateUser };
