@@ -24,11 +24,7 @@ const signUp = async (request: Request, response: Response) => {
     }
 
     const hashPassword = bcrypt.hashSync(password, 6);
-    const todayDate = new Date().toLocaleString('ru-RU', {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    });
+    const todayDate = new Date().toLocaleString('ru-RU');
     const newUser = new User({
       username,
       email,
@@ -56,6 +52,11 @@ const signIn = async (request: Request, response: Response) => {
     if (!validPassword) {
       return response.status(400).json({ message: 'Incorrect password!' });
     }
+
+    const todayDate = new Date().toLocaleString('ru-RU');
+    await User.findByIdAndUpdate(user._id, {
+      lastLoginDate: todayDate,
+    });
 
     const token = generateToken(user._id.toString(), user.email);
     return response.json({ token });
