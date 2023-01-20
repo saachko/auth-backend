@@ -4,7 +4,8 @@ import User from '../models/user';
 
 const getUsers = async (request: Request, response: Response) => {
   try {
-    response.json('server works');
+    const users = await User.find();
+    response.json(users);
   } catch (error) {
     console.log(error);
   }
