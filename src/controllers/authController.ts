@@ -52,6 +52,9 @@ const signIn = async (request: Request, response: Response) => {
     if (!validPassword) {
       return response.status(400).json({ message: 'Incorrect password!' });
     }
+    if (user.isBlocked) {
+      return response.status(403).json({ message: "User is blocked and can't sign in!" });
+    }
 
     const todayDate = new Date().toLocaleString('ru-RU');
     await User.findByIdAndUpdate(user._id, {
