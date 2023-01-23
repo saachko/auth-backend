@@ -12,6 +12,16 @@ const getUsers = async (request: Request, response: Response) => {
   }
 };
 
+const getUserById = async (request: Request, response: Response) => {
+  try {
+    const userId = new ObjectId(request.params.id);
+    const user = await User.findById(userId);
+    response.json(user);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const deleteUser = async (request: Request, response: Response) => {
   try {
     const userId = new ObjectId(request.params.id);
@@ -34,4 +44,4 @@ const updateUser = async (request: Request, response: Response) => {
   }
 };
 
-export { getUsers, deleteUser, updateUser };
+export { getUsers, getUserById, deleteUser, updateUser };
