@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import { PORT } from './constants';
 import authRouter from './routers/authRouter';
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use(cors());
 
 const start = async () => {
   try {
