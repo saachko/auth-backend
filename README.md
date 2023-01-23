@@ -1,6 +1,6 @@
 # Auth-backend
 
-**Auth-backend** is a server for user registration and authentication. 
+**Auth-backend** is a server for user registration and authentication.
 
 - node.js
 - express
@@ -8,6 +8,7 @@
 - mongoDB
 
 ### Security:
+
 - jsonwebtoken
 - bcryptjs
 
@@ -16,13 +17,16 @@
 ## Endpoints:
 
 `Auth` (`auth/` route)
+
 - `POST /signup` - new user registration
 - `POST /signin` - user authorization
 
 `User` (`users/` route)
-> Non-authenticated users don't have access to the user management. 
+
+> Non-authenticated users don't have access to the user management.
 
 - `GET /users` - get all users
+- `GET /:userId` - get user by id
 - `PUT /:userId` - update user by id
 - `DELETE /:userId` - delete user by id
 
