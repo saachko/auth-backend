@@ -8,6 +8,10 @@ import usersRouter from './routers/usersRouter';
 
 const app = express();
 app.use(express.json());
+app.use((request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use(cors());
