@@ -8,7 +8,7 @@ const getUsers = async (request: Request, response: Response) => {
     const users = await User.find();
     response.json(users);
   } catch (error) {
-    console.log(error);
+    throw new Error(`${error}`);
   }
 };
 
@@ -18,7 +18,7 @@ const getUserById = async (request: Request, response: Response) => {
     const user = await User.findById(userId);
     response.json(user);
   } catch (error) {
-    console.log(error);
+    throw new Error(`${error}`);
   }
 };
 
@@ -28,7 +28,7 @@ const deleteUser = async (request: Request, response: Response) => {
     const deletedUser = await User.findByIdAndDelete(userId);
     response.json(deletedUser);
   } catch (error) {
-    console.log(error);
+    throw new Error(`${error}`);
   }
 };
 
@@ -40,7 +40,7 @@ const updateUser = async (request: Request, response: Response) => {
     });
     response.json(updatedUser);
   } catch (error) {
-    console.log(error);
+    throw new Error(`${error}`);
   }
 };
 

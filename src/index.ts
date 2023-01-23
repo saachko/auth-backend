@@ -17,7 +17,7 @@ const start = async () => {
     );
     app.listen(PORT, () => console.log('server started'));
   } catch (error) {
-    console.log(error);
+    throw new Error(`${error}`);
   }
 };
 

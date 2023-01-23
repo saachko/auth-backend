@@ -36,8 +36,8 @@ const signUp = async (request: Request, response: Response) => {
     await newUser.save();
     return response.json({ message: 'You have signed up' });
   } catch (error) {
-    console.log(error);
     response.status(400).json({ message: 'Registration error' });
+    throw new Error(`${error}`);
   }
 };
 
@@ -64,8 +64,8 @@ const signIn = async (request: Request, response: Response) => {
     const token = generateToken(user._id.toString(), user.email);
     return response.json({ token });
   } catch (error) {
-    console.log(error);
     response.status(400).json({ message: 'Authorization error' });
+    throw new Error(`${error}`);
   }
 };
 
