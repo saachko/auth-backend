@@ -14,7 +14,11 @@ app.use((request, response, next) => {
 });
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 const start = async () => {
   try {
